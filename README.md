@@ -2,7 +2,7 @@
 
 Soluciones a los ejercicios del libro *SQL Fácil* de Pere Chardi García.
 
-Este repositorio contiene las soluciones a los ejercicios del libro organizadas en ejercicio por página.
+Este repositorio contiene mis soluciones a los ejercicios del libro organizadas por ejercicio por página.
 
 ## Contenido relevante del libro
 
