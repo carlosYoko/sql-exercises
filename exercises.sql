@@ -25,3 +25,23 @@ select * from empleados e where SEXO = 'M' and SALARIO > 1300;
 -- e.3.58
 select  * from personas p where GAFAS = 'S' and RUBIA = 'N' and ALTA = 'N'
 
+select sum(salario) from empleados;
+
+select count(*) from empleados e;
+
+-- Funciones de agregado
+select sum(salario) / count(*) as SALARIO_MEDIO from empleados e;
+-- equivalente para calcular el svg
+select avg(salario) as SALARIO_MEDIO from empleados e;
+
+select max(salario) from empleados e;
+
+-- e1.63
+select avg(salario) as SALARIO_MEDIO_HOMBRES from empleados e where SEXO = 'H';
+
+-- e2.63
+select max(salario) as SALARIO_MAXIMO, min(salario ) as SALARIO_MINIMO from empleados e;
+
+-- e3.63
+select sum(salario) as TOTAL_A_PAGAR from empleados e where SEXO = 'M'; 
+
