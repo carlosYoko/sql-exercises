@@ -45,3 +45,30 @@ select max(salario) as SALARIO_MAXIMO, min(salario ) as SALARIO_MINIMO from empl
 -- e3.63
 select sum(salario) as TOTAL_A_PAGAR from empleados e where SEXO = 'M'; 
 
+select sexo, count(*)as TOTAL_EMPLEADOS from empleados e
+group by sexo;
+
+select distinct sexo from empleados e;
+
+-- e1.79
+select sexo, max(SALARIO) as Minimo, min(SALARIO) as Maximo, avg(SALARIO) as Promedio
+from empleados e
+group by sexo;
+
+-- e2.79
+select ESPECIE, count(*)
+from mascotas m
+where ESTADO  = 'B'
+group by ESPECIE;
+
+-- e3.79
+select UBICACION, especie, count(*) as Total_Ejemplares
+from mascotas m 
+where ESTADO = 'A'
+group by UBICACION, especie;
+
+select Ubicacion, count(*) as total
+from mascotas 
+where estado = 'A' 
+group by UBICACION
+having total = 2
