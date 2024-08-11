@@ -97,3 +97,11 @@ from camisas c , pantalones p , calzados c2
 
 -- e1.120
 select p.PANTALON, c.CALZADO from pantalones p , calzados c 
+
+select c.ID_CAMISA , c.CAMISA , c.PESO_GR as Peso_Camisa,
+		p.ID_PANTALON , p.PANTALON , p.PESO_GR as Peso_Pantalon
+from camisas c , pantalones p 
+
+select count(*) as Combinaciones
+from camisas c , pantalones p 
+
