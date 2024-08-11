@@ -127,3 +127,48 @@ from  pantalones p
 union all
 select concat (c2.calzado)
 from calzados c2 
+
+-- e1.144
+select C.TITULO 
+from cursos c , alumnos a , alumnos_cursos ac
+where (c.ID_CURSO = ac.ID_CURSO 
+and a.ID_ALUMNO  = ac.ID_ALUMNO)
+and a.ID_ALUMNO  = 1;
+
+-- e1,2.144
+select  a.NOMBRE , a.APELLIDOS, c.TITULO as Curso 
+from cursos c , alumnos a , alumnos_cursos ac
+where (c.ID_CURSO = ac.ID_CURSO 
+and a.ID_ALUMNO  = ac.ID_ALUMNO)
+and a.NOMBRE like '%E%';
+
+-- e2.144
+select  concat(p.NOMBRE ,' ', p.APELLIDOS) AS NOMBRE_COMPLETO , count(p.NOMBRE) as TOTAL_CURSOS
+from profesores p , cursos c 
+where p.ID_PROFE = c.ID_PROFE
+group by p.NOMBRE , p.APELLIDOS; 
+
+-- e3.144
+select c.TITULO, count(ac.ID_ALUMNO) as TOTAL_ALUMNOS
+from cursos c , alumnos_cursos ac
+where ac.ID_CURSO = c.ID_CURSO
+group by C.TITULO
+
+-- e3,2.144
+select c.TITULO, count(ac.ID_ALUMNO) as TOTAL_ALUMNOS
+from cursos c , alumnos_cursos ac
+where  ac.ID_CURSO = c.ID_CURSO
+group by C.TITULO
+having TOTAL_ALUMNOS = 2;
+
+select c.TITULO as CURSO, count(ac.ID_ALUMNO) as ALUMNOS, COUNT(C.TITULO) as REGISTROS
+from alumnos_cursos ac right join cursos c
+on ac.ID_CURSO = c.ID_CURSO 
+group by c.TITULO 
+
+
+select A.NOMBRE, a.ID_ALUMNO, count(a.ID_ALUMNO) Total_Cursos
+from alumnos a
+right join alumnos_cursos ac 
+on A.ID_ALUMNO  = AC.ID_ALUMNO 
+group by a.NOMBRE , a.ID_ALUMNO 
