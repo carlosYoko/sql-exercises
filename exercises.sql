@@ -16,3 +16,12 @@ select * from empleados e where ID_EMPLEADO = 1 or ID_EMPLEADO  = 2 or ID_EMPLEA
 -- equivalente con el operador IN
 select * from empleados e where ID_EMPLEADO in (1,2,4);
 
+-- e1.57
+select * from personas p where ALTA = 'S' or (RUBIA = 'S' and GAFAS = 'S');
+
+-- e.2.57
+select * from empleados e where SEXO = 'M' and SALARIO > 1300;
+
+-- e.3.58
+select  * from personas p where GAFAS = 'S' and RUBIA = 'N' and ALTA = 'N'
+
