@@ -166,9 +166,26 @@ from alumnos_cursos ac right join cursos c
 on ac.ID_CURSO = c.ID_CURSO 
 group by c.TITULO 
 
-
 select A.NOMBRE, a.ID_ALUMNO, count(a.ID_ALUMNO) Total_Cursos
 from alumnos a
 right join alumnos_cursos ac 
 on A.ID_ALUMNO  = AC.ID_ALUMNO 
 group by a.NOMBRE , a.ID_ALUMNO 
+
+-- e1.155
+select p.NOMBRE, count(c.ID_PROFE) as TOTAL_CURSOS
+from  profesores p 
+left join cursos c ON p.ID_PROFE = c.ID_PROFE
+group by p.NOMBRE
+
+-- e2.155
+select c.TITULO, count(a.ID_ALUMNO) as ALMUNOS_MATRICULADOS
+from alumnos a join alumnos_cursos ac ON a.ID_ALUMNO = ac.ID_ALUMNO right join cursos c on ac.ID_CURSO = c.ID_CURSO 
+group by c.TITULO 
+
+-- e2.155 (variante)
+select c.TITULO, a.NOMBRE , a.APELLIDOS 
+from cursos c join alumnos_cursos ac on c.ID_CURSO = ac.ID_CURSO join alumnos a on a.ID_ALUMNO = ac.ID_ALUMNO 
+group by c.TITULO , a.NOMBRE , a.APELLIDOS 
+order by c.TITULO 
+
