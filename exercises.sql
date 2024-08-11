@@ -72,3 +72,18 @@ from mascotas
 where estado = 'A' 
 group by UBICACION
 having total = 2
+
+-- e.86
+select UBICACION, count(*) as Ejemplares 
+from mascotas 
+where ESTADO = 'A' 
+group by UBICACION
+having Ejemplares between 2 and 3;
+
+-- e1.101
+select * from empleados e
+where APELLIDOS like '%calvo%';
+
+-- e2.101
+select * from vehiculos v
+where ULTI_ITV is null and PROX_ITV between '20110101' and '20111231'
