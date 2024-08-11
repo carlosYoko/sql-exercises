@@ -105,3 +105,25 @@ from camisas c , pantalones p
 select count(*) as Combinaciones
 from camisas c , pantalones p 
 
+-- e1.129
+select avg(c.PESO_GR + p.PESO_GR + c2.PESO_GR) as peso_total
+from camisas c , pantalones p , calzados c2 
+
+-- e2.129
+select c.CAMISA, avg(c.PESO_GR  + p.PESO_GR) as peso_medio
+from camisas c , pantalones p
+group by c.CAMISA
+having peso_medio > 850
+
+select c.CAMISA , p.PANTALON 
+from camisas c , pantalones p
+where  c.ID_CAMISA  != p.ID_PANTALON
+
+select concat('Camisa ', c.CAMISA) as prenda
+from camisas c 
+union all
+select concat('Pantalon ', p.PANTALON) 
+from  pantalones p
+union all
+select concat (c2.calzado)
+from calzados c2 
