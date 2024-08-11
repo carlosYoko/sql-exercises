@@ -87,3 +87,13 @@ where APELLIDOS like '%calvo%';
 -- e2.101
 select * from vehiculos v
 where ULTI_ITV is null and PROX_ITV between '20110101' and '20111231'
+
+select camisa, pantalon, c.PESO_GR + p.PESO_GR as peso
+from camisas c, pantalones p 
+
+select concat('Camisa de ', c.CAMISA, ' con pantalon de ', p.PANTALON, ' y ', c2.CALZADO )
+as Muda, c.PESO_GR + p.PESO_GR + c2.PESO_GR  as Peso_Total
+from camisas c , pantalones p , calzados c2 
+
+-- e1.120
+select p.PANTALON, c.CALZADO from pantalones p , calzados c 
