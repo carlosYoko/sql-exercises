@@ -246,7 +246,7 @@ from cursos c join alumnos_cursos ac on c.ID_CURSO = ac.ID_CURSO join alumnos a 
 group by c.TITULO , a.NOMBRE , a.APELLIDOS 
 order by c.TITULO
 
--- Capitulo 18
+-- Capitulo 18 --
 -- Insert, update, delete --
 
 -- e1.190
@@ -260,3 +260,23 @@ delete from cursos where ID_CURSO = 6;
 update emplea2
 set salario = 3000
 where salario < 3000 and salario * 1.02 > 3000
+
+-- Tercera Parte --
+-- Capitulo 20 --
+-- Insert, update, delete --
+
+select date_format(localtime, '%d-%m-%Y')
+
+-- e.1.214
+select if(SEXO = 'M', 'MUJERES', 'HOMBRES')as SEXO, round(avg(salario), 1) 
+from empleados e 
+group by if(SEXO = 'M', 'MUJERES', 'HOMBRES')
+
+-- e.2.214
+select NOMBRE , APELLIDOS, F_NACIMIENTO, truncate(datediff(current_date(), F_NACIMIENTO) / 365 , 0 )as Edad 
+from empleados e 
+
+-- e.3.214
+select date_format(PROX_ITV, '%Y') as Revision , count(1) as vehiculos
+from vehiculos v 
+group by date_format(PROX_ITV, '%Y')
