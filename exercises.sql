@@ -245,3 +245,18 @@ select c.TITULO, a.NOMBRE , a.APELLIDOS
 from cursos c join alumnos_cursos ac on c.ID_CURSO = ac.ID_CURSO join alumnos a on a.ID_ALUMNO = ac.ID_ALUMNO 
 group by c.TITULO , a.NOMBRE , a.APELLIDOS 
 order by c.TITULO
+
+-- Capitulo 18
+-- Insert, update, delete --
+
+-- e1.190
+insert into cursos (ID_CURSO, TITULO, ID_PROFE)
+values (6, 'Pintura rupestre', 1);
+
+-- e1,1.190
+delete from cursos where ID_CURSO = 6;
+
+-- e2.191
+update emplea2
+set salario = 3000
+where salario < 3000 and salario * 1.02 > 3000
