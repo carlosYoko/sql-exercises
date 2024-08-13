@@ -280,3 +280,19 @@ from empleados e
 select date_format(PROX_ITV, '%Y') as Revision , count(1) as vehiculos
 from vehiculos v 
 group by date_format(PROX_ITV, '%Y')
+
+-- Capitulo 21 --
+-- Subconsultas en clausula select --
+
+select nombre, apellidos, salario / (select sum(salario) from empleados e) * 100  as Porcentaje
+from empleados e
+
+-- e1.223
+select UBICACION, 
+count(UBICACION) / (select count(UBICACION)
+from mascotas m2
+where ESTADO = 'A'
+) * 100 as Porcentaje
+from mascotas
+where ESTADO = 'A'
+group by UBICACION
