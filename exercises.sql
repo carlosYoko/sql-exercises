@@ -288,11 +288,17 @@ select nombre, apellidos, salario / (select sum(salario) from empleados e) * 100
 from empleados e
 
 -- e1.223
-select UBICACION, 
-count(UBICACION) / (select count(UBICACION)
-from mascotas m2
-where ESTADO = 'A'
-) * 100 as Porcentaje
+select UBICACION,
+count(UBICACION)
+/ (select count(UBICACION) from mascotas m2 where ESTADO = 'A') * 100 as Porcentaje
 from mascotas
 where ESTADO = 'A'
 group by UBICACION
+
+-- e1,1.223
+select UBICACION , ESPECIE , count(UBICACION) 
+/ (select count(UBICACION) from mascotas m2 where ESTADO = 'A' and m.especie = m2.especie ) * 100 as Porcentaje
+from mascotas m 
+where ESTADO = 'A'
+group by UBICACION , ESPECIE 
+order by m.UBICACION
