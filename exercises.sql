@@ -302,3 +302,27 @@ from mascotas m
 where ESTADO = 'A'
 group by UBICACION , ESPECIE 
 order by m.UBICACION
+
+-- Capitulo 22 --
+-- Subconsultas en clasusula from --
+
+-- e1.233
+select UBICACION, count(*) / TOTAL * 100 as Porcentaje 
+from mascotas m,
+(select count(*) as TOTAL
+from mascotas m2 
+where m2.ESTADO = 'A') as TM
+where m.ESTADO = 'A'
+group by UBICACION, TOTAL
+
+-- e2.233
+select m.UBICACION, m.ESPECIE, count(UBICACION) / TOTAL * 100 as Porcentaje
+from mascotas m,
+(select m2.ESPECIE, count(ESPECIE) as TOTAL
+from mascotas m2
+where m2.ESTADO = 'A'
+group by m2.ESPECIE ) as TE 
+where m.ESTADO = 'A' 
+and m.ESPECIE = TE.ESPECIE
+group by m.UBICACION , m.ESPECIE , TOTAL
+
