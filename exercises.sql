@@ -326,3 +326,43 @@ where m.ESTADO = 'A'
 and m.ESPECIE = TE.ESPECIE
 group by m.UBICACION , m.ESPECIE , TOTAL
 
+select min(F_NACIMIENTO)
+from empleados e 
+
+-- Capitulo 23 --
+-- Subconsultas en clasusula where --
+
+-- e1.254
+select *
+from empleados e 
+where F_NACIMIENTO not in (select max(F_NACIMIENTO) 
+from empleados e2
+union
+select min(F_NACIMIENTO)
+from empleados)
+
+-- e2.254
+select *
+from profesores p 
+where ID_PROFE not in (select distinct ID_PROFE
+from cursos c
+where ID_PROFE is not null)
+
+-- e2,1.254
+select *
+from profesores p 
+where not exists (select ID_PROFE
+from cursos c
+where p.ID_PROFE = c.ID_PROFE)
+
+-- e3.254
+select UBICACION , ESPECIE , count(UBICACION) as Ejemplares
+from mascotas m 
+where ESTADO = 'A'
+group by UBICACION , ESPECIE 
+having count(UBICACION) = (select max(Ejemplares)
+from (select UBICACION, count(UBICACION) Ejemplares
+from mascotas m2
+where ESTADO = 'A'
+group by UBICACION) as Ej
+)
