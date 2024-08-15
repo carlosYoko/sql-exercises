@@ -399,3 +399,15 @@ select c.ID_CURSO, c.TITULO, a.ID_ALUMNO, a.NOMBRE, a.APELLIDOS
 from alumnos a
 join alumnos_cursos ac on a.ID_ALUMNO = ac.ID_ALUMNO
 join cursos c on c.ID_CURSO = ac.ID_CURSO;
+
+-- Capitulo 26 --
+-- Subconsultas en update --
+
+update articulos a
+set PRECIO = ifnull(
+(select avg(distinct l.precio)
+from facturas f,
+lineas_factura l
+where f.fecha_factura > '20121231' and f.fecha_factura < '20140101' and f.id_factura = l.id_factura
+and l.id_articulo = a.ID_ARTICULO),0)
+where PRECIO = 0;
