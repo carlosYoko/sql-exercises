@@ -403,6 +403,7 @@ join cursos c on c.ID_CURSO = ac.ID_CURSO;
 -- Capitulo 26 --
 -- Subconsultas en update --
 
+-- e1.279
 update articulos a
 set PRECIO = ifnull(
 (select avg(distinct l.precio)
