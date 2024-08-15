@@ -366,3 +366,36 @@ from mascotas m2
 where ESTADO = 'A'
 group by UBICACION) as Ej
 )
+
+-- Capitulo 24 --
+-- Vistas --
+
+-- e1.262
+create view MASCOTAS_VISTA as
+select 
+if(ESPECIE = 'G', 'Gato', 'Perro') as Desc_Especie,
+ESPECIE ,
+if(SEXO = 'M', 'Macho', 'HEmbra') as Desc_Sexo,
+SEXO,
+if(ESTADO = 'A', 'Alta', 'Baja') as Desc_Estado,
+ESTADO
+from mascotas m 
+
+-- e1,2.262
+create view MASCOTAS_VISTA2 as
+select 
+if(ESPECIE = 'G', 'Gato', 'Perro') as ESPECIE,
+if(SEXO = 'M', 'Macho', 'HEmbra') as SEXO,
+UBICACION,
+if(ESTADO = 'A', 'Alta', 'Baja') as ESTADO
+from mascotas m 
+
+-- Capitulo 25 --
+-- Inserciones masivas --
+
+-- e1.270
+create table ALUMNOS_CURSOS_TMPE as
+select c.ID_CURSO, c.TITULO, a.ID_ALUMNO, a.NOMBRE, a.APELLIDOS
+from alumnos a
+join alumnos_cursos ac on a.ID_ALUMNO = ac.ID_ALUMNO
+join cursos c on c.ID_CURSO = ac.ID_CURSO;
